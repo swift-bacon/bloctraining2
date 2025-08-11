@@ -1,5 +1,6 @@
 import 'package:bloctraining2/core/utils/constants.dart';
 import 'package:bloctraining2/features/daily_news/data/models/article_model.dart';
+import 'package:bloctraining2/features/daily_news/data/models/news_model.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
@@ -11,7 +12,7 @@ abstract class NewsApiService {
     factory NewsApiService(Dio dio) = _NewsApiService;
 
     @GET('/top-headlines')
-    Future<HttpResponse<List<ArticleModel>>> getNewsArticles({
+    Future<HttpResponse<NewsModel>> getNewsArticles({
         @Query("apiKey") String? apiKey,
         @Query("country") String? country,
         @Query("category") String? category,

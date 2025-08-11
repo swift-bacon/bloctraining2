@@ -22,7 +22,7 @@ class ArticleRepositoryImplementation implements ArticleRepository {
             );
 
             if (httpResponse.response.statusCode == HttpStatus.ok) {
-                return DataSuccess(httpResponse.data);
+                return DataSuccess(httpResponse.data.articles);
             } else {
                 return DataFailed(
                     DioException(

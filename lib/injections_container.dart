@@ -2,6 +2,7 @@ import 'package:bloctraining2/features/daily_news/data/data_sources/remote/news_
 import 'package:bloctraining2/features/daily_news/data/repository/article_repository_implementation.dart';
 import 'package:bloctraining2/features/daily_news/domain/repository/article_repository.dart';
 import 'package:bloctraining2/features/daily_news/domain/usecases/get_article.dart';
+import 'package:bloctraining2/features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
 
@@ -18,9 +19,14 @@ Future<void> initializeDependencies() async {
     sl.registerSingleton<ArticleRepository>(
         ArticleRepositoryImplementation(sl())
     );
-    
+
     sl.registerSingleton<GetArticleUseCase>(
         GetArticleUseCase(sl())
+    );
+
+    //Blocs
+    sl.registerFactory<RemoteArticlesBloc>(
+        () => RemoteArticlesBloc(sl())
     );
 
 }
